@@ -1,0 +1,112 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #050505;
+  clip-path: inset(0);
+}
+
+.loader-brand {
+  text-align: center;
+}
+
+.loader-brand b {
+  display: block;
+  font: 800 clamp(40px, 8vw, 110px) Manrope;
+  letter-spacing: -0.08em;
+}
+
+.loader-brand span {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+}
+
+.loader-bottom {
+  position: absolute;
+  left: var(--page);
+  right: var(--page);
+  bottom: 38px;
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+}
+
+.loader-number {
+  color: #fff;
+  font-style: normal;
+}
+
+.loader-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #181818;
+}
+
+.loader-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media (max-width: 479px) {
+  .loader-brand b {
+    font-size: clamp(42px, 13vw, 70px);
+  }
+
+  .loader-brand span {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+  }
+
+  .loader-bottom {
+    left: var(--page);
+    right: var(--page);
+    bottom: 25px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .loader-brand b {
+    font-size: clamp(48px, 12vw, 80px);
+  }
+
+  .loader-brand span {
+    font-size: 9px;
+  }
+
+  .loader-bottom {
+    bottom: 30px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .loader-brand b {
+    font-size: clamp(55px, 9vw, 95px);
+  }
+
+  .loader-bottom {
+    bottom: 32px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .loader-brand b {
+    font-size: clamp(60px, 8vw, 105px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .loader-brand b {
+    font-size: clamp(70px, 8vw, 110px);
+  }
+}

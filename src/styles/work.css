@@ -1,0 +1,380 @@
+.work {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.work-head {
+  position: relative;
+  z-index: 10;
+  top: auto;
+  left: auto;
+  width: calc(100% - (var(--page) * 2));
+  margin: 0 var(--page);
+  padding-top: 7vh;
+  display: grid;
+  grid-template-columns: var(--index) minmax(0, 1fr);
+  column-gap: var(--content-gap);
+  pointer-events: none;
+}
+
+.work-head .tag {
+  position: static;
+}
+
+.work-head > div:last-child {
+  min-width: 0;
+}
+
+.work-head .eyebrow {
+  margin: 0 0 28px;
+  color: #777;
+}
+
+.work-head h2 {
+  margin: 0;
+  font-size: clamp(45px, 6.2vw, 100px);
+  line-height: 0.82;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.work-track {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+  min-width: 100vw;
+  height: calc(100vh - 30vh);
+  gap: 42px;
+  padding: 6vh var(--page) 4vh;
+}
+
+.work-card {
+  position: relative;
+  width: min(67vw, 900px);
+  flex: 0 0 auto;
+}
+
+.work-media {
+  position: relative;
+  width: 100%;
+  height: 62vh;
+  min-height: 430px;
+  overflow: hidden;
+  background: #151515;
+}
+
+.work-media video {
+  position: absolute;
+  inset: -3%;
+  width: 106%;
+  height: 106%;
+  object-fit: cover;
+  filter: saturate(0.8);
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s;
+}
+
+.work-card:hover .work-media video {
+  transform: scale(1.07);
+  filter: saturate(1);
+}
+
+.work-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.18),
+      transparent 40%,
+      rgba(0, 0, 0, 0.8)
+    );
+}
+
+.work-num {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+}
+
+.work-open {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 20px;
+  opacity: 0.7;
+}
+
+.work-title {
+  position: absolute;
+  z-index: 2;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+}
+
+.work-title small {
+  color: #aaa;
+  font: 10px "DM Mono";
+  letter-spacing: 0.12em;
+}
+
+.work-title strong {
+  display: block;
+  margin-top: 10px;
+  font-size: clamp(42px, 6vw, 90px);
+  line-height: 0.82;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.work-info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 13px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+}
+
+.work-info h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.work-info p,
+.work-info > span {
+  margin: 5px 0 0;
+  color: #777;
+}
+
+.more {
+  width: min(55vw, 800px);
+  min-width: 500px;
+  flex: 0 0 auto;
+  padding-right: var(--page);
+  font-size: clamp(80px, 12vw, 190px);
+  line-height: 0.75;
+  font-weight: 800;
+  letter-spacing: -0.09em;
+}
+
+.more > span,
+.more > strong {
+  display: block;
+}
+
+.more > strong {
+  color: var(--red);
+}
+
+.more small {
+  display: block;
+  margin-top: 35px;
+  color: #666;
+  font: 10px "DM Mono";
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 479px) {
+  .work {
+    min-height: auto;
+  }
+
+  .work-head {
+    width: calc(100% - (var(--page) * 2));
+    margin: 0 var(--page);
+    padding-top: 70px;
+    display: block;
+  }
+
+  .work-head .tag {
+    margin-bottom: 35px;
+  }
+
+  .work-head .eyebrow {
+    margin-bottom: 22px;
+  }
+
+  .work-head h2 {
+    font-size: clamp(48px, 13vw, 80px);
+    line-height: 0.84;
+  }
+
+  .work-track {
+    height: auto;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    padding: 55px var(--page) 80px;
+  }
+
+  .work-card {
+    width: 100%;
+  }
+
+  .work-media {
+    height: 53svh;
+    min-height: 320px;
+    max-height: 480px;
+  }
+
+  .work-title {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .work-title strong {
+    font-size: clamp(38px, 10vw, 58px);
+  }
+
+  .work-info {
+    display: block;
+  }
+
+  .work-info h3 {
+    font-size: 18px;
+  }
+
+  .work-info p,
+  .work-info > span {
+    font-size: 9px;
+  }
+
+  .more {
+    width: 100%;
+    min-width: 0;
+    padding-right: 0;
+    font-size: clamp(70px, 18vw, 120px);
+  }
+
+  .more small {
+    margin-top: 25px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .work-head {
+    width: calc(100% - (var(--page) * 2));
+    margin: 0 var(--page);
+    padding-top: 80px;
+    display: block;
+  }
+
+  .work-head .tag {
+    margin-bottom: 38px;
+  }
+
+  .work-head h2 {
+    font-size: clamp(52px, 12vw, 90px);
+  }
+
+  .work-track {
+    height: auto;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 60px var(--page) 90px;
+  }
+
+  .work-card {
+    width: 100%;
+  }
+
+  .work-media {
+    height: 55vh;
+    min-height: 350px;
+  }
+
+  .work-title strong {
+    font-size: clamp(40px, 9vw, 60px);
+  }
+
+  .work-info h3 {
+    font-size: 20px;
+  }
+
+  .more {
+    width: 100%;
+    min-width: 0;
+    padding-right: 0;
+    font-size: clamp(75px, 17vw, 130px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .work-head {
+    padding-top: 75px;
+  }
+
+  .work-head h2 {
+    font-size: clamp(50px, 6.5vw, 80px);
+  }
+
+  .work-track {
+    height: calc(100vh - 250px);
+    gap: 32px;
+    padding: 55px var(--page) 40px;
+  }
+
+  .work-card {
+    width: 72vw;
+  }
+
+  .work-media {
+    height: 58vh;
+    min-height: 400px;
+  }
+
+  .work-title strong {
+    font-size: clamp(45px, 6vw, 70px);
+  }
+
+  .more {
+    width: 55vw;
+    min-width: 420px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .work-card {
+    width: min(68vw, 900px);
+  }
+
+  .work-media {
+    height: 62vh;
+  }
+
+  .work-track {
+    gap: 38px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .work-card {
+    width: min(64vw, 1050px);
+  }
+
+  .work-media {
+    height: 64vh;
+    min-height: 500px;
+  }
+
+  .work-track {
+    gap: 48px;
+  }
+
+  .work-title strong {
+    font-size: clamp(60px, 6vw, 100px);
+  }
+}

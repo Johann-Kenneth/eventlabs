@@ -1,0 +1,209 @@
+.audience {
+  display: grid;
+  grid-template-columns:
+    var(--index)
+    minmax(0, 1fr);
+  column-gap: var(--content-gap);
+  align-items: start;
+}
+
+.audience > .tag {
+  position: static;
+}
+
+.audience > div:last-child {
+  min-width: 0;
+  width: 100%;
+}
+
+.audience .eyebrow {
+  margin: 0 0 40px;
+  color: #777;
+}
+
+.audience-intro {
+  margin: 0;
+  font-size: clamp(55px, 7vw, 110px);
+  line-height: 0.84;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.audience-description {
+  max-width: 560px;
+  margin: 40px 0 80px;
+  color: #999;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.audience-list {
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+
+.audience-row {
+  width: 100%;
+  min-height: 150px;
+  display: grid;
+  grid-template-columns:
+    60px
+    minmax(0, 1fr)
+    50px;
+  column-gap: 25px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  transition:
+    padding 0.4s,
+    background 0.4s;
+}
+
+.audience-row > * {
+  min-width: 0;
+}
+
+.audience-row:hover {
+  padding-left: 20px;
+  background: #090909;
+}
+
+.audience-row span {
+  color: #666;
+  font: 10px "DM Mono";
+}
+
+.audience-row h2 {
+  margin: 0;
+  font-size: clamp(45px, 7vw, 110px);
+  line-height: 0.8;
+  font-weight: 800;
+  letter-spacing: -0.07em;
+}
+
+.audience-row b {
+  font-size: 28px;
+  font-weight: 300;
+  text-align: right;
+}
+
+@media (max-width: 479px) {
+  .audience {
+    display: block;
+  }
+
+  .audience .eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .audience-intro {
+    font-size: clamp(48px, 13vw, 78px);
+    line-height: 0.86;
+  }
+
+  .audience-description {
+    max-width: 330px;
+    margin: 30px 0 55px;
+    line-height: 1.6;
+  }
+
+  .audience-row {
+    min-height: 100px;
+    grid-template-columns:
+      28px
+      minmax(0, 1fr)
+      25px;
+    column-gap: 10px;
+  }
+
+  .audience-row h2 {
+    font-size: clamp(38px, 10vw, 58px);
+  }
+
+  .audience-row b {
+    font-size: 20px;
+  }
+
+  .audience-row:hover {
+    padding-left: 10px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .audience {
+    display: block;
+  }
+
+  .audience-intro {
+    font-size: clamp(55px, 12vw, 90px);
+  }
+
+  .audience-description {
+    max-width: 500px;
+    margin: 35px 0 65px;
+  }
+
+  .audience-row {
+    min-height: 115px;
+    grid-template-columns:
+      35px
+      minmax(0, 1fr)
+      30px;
+    column-gap: 12px;
+  }
+
+  .audience-row h2 {
+    font-size: clamp(40px, 9vw, 65px);
+  }
+
+  .audience-row b {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .audience-intro {
+    font-size: clamp(55px, 7vw, 90px);
+  }
+
+  .audience-description {
+    max-width: 470px;
+    margin-bottom: 70px;
+  }
+
+  .audience-row {
+    min-height: 125px;
+    grid-template-columns:
+      45px
+      minmax(0, 1fr)
+      35px;
+    column-gap: 15px;
+  }
+
+  .audience-row h2 {
+    font-size: clamp(45px, 6.5vw, 75px);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .audience-intro {
+    font-size: clamp(65px, 7vw, 100px);
+  }
+
+  .audience-description {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .audience-intro {
+    font-size: clamp(80px, 7vw, 120px);
+  }
+
+  .audience-description {
+    max-width: 600px;
+  }
+
+  .audience-row {
+    min-height: 170px;
+  }
+}

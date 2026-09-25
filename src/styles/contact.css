@@ -1,0 +1,154 @@
+.contact {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-main {
+  width: min(1200px, calc(100% - var(--index)));
+  margin-left: calc(var(--index) + var(--content-gap));
+}
+
+.contact-main > .eyebrow {
+  margin-bottom: 50px;
+  color: #777;
+}
+
+.contact h2 {
+  margin-bottom: 0;
+}
+
+.contact-description {
+  max-width: 500px;
+  margin: 45px 0 30px;
+  color: #999;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.contact-button b {
+  font: 20px Manrope;
+}
+
+.contact footer {
+  position: absolute;
+  left: var(--page);
+  right: var(--page);
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+}
+
+@media (max-width: 479px) {
+  .contact {
+    min-height: 100svh;
+  }
+
+  .contact-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .contact-main > .eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .contact h2 {
+    font-size: clamp(55px, 15vw, 90px);
+    line-height: 0.84;
+  }
+
+  .contact-description {
+    max-width: 330px;
+    margin: 32px 0 24px;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .contact footer {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 70px;
+    color: #666;
+    font-size: 9px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .contact {
+    min-height: 100svh;
+  }
+
+  .contact-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .contact-main > .eyebrow {
+    margin-bottom: 35px;
+  }
+
+  .contact h2 {
+    font-size: clamp(60px, 14vw, 100px);
+    line-height: 0.84;
+  }
+
+  .contact-description {
+    max-width: 450px;
+    margin: 35px 0 25px;
+    font-size: 18px;
+  }
+
+  .contact footer {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 75px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contact-main {
+    width: calc(100% - var(--index));
+    margin-left: calc(var(--index) + var(--content-gap));
+  }
+
+  .contact-description {
+    max-width: 470px;
+    font-size: 18px;
+  }
+
+  .contact footer {
+    bottom: 25px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .contact-description {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .contact-description {
+    max-width: 560px;
+  }
+
+  .contact footer {
+    bottom: 30px;
+  }
+}

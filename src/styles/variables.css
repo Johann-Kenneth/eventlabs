@@ -1,0 +1,11 @@
+:root {
+  --bg: #050505;
+  --fg: #f5f4f0;
+  --muted: #777773;
+  --line: rgba(255, 255, 255, 0.15);
+  --red: #e50914;
+
+  --page: 5vw;
+  --index: 110px;
+  --content-gap: 45px;
+}
