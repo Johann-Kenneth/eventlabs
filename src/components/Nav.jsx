@@ -1,24 +1,52 @@
-import React,{ useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <header className="nav">
-        <a href="#">
+      <header
+        className={`nav ${scrolled ? "scrolled" : ""} ${
+          open ? "menu-active" : ""
+        }`}
+      >
+        <a
+          href="#"
+          className="nav-brand"
+          aria-label="EventLabs home"
+        >
           <img
             src="/logo.jpeg"
             alt="EventLabs Entertainments"
-            style={{ width: "90px" }}
           />
         </a>
 
         <button
           className={open ? "menu open" : "menu"}
           onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
-          {open ? "CLOSE" : "MENU"}
+          <span className="menu-label">
+            {open ? "CLOSE" : "MENU"}
+          </span>
 
           <i>
             <b />
@@ -27,7 +55,11 @@ function Nav() {
         </button>
       </header>
 
-      <div className={open ? "menu-panel open" : "menu-panel"}>
+      <div
+        className={
+          open ? "menu-panel open" : "menu-panel"
+        }
+      >
         <span>EVENTLABS / NAVIGATION</span>
 
         <nav>
@@ -57,4 +89,5 @@ function Nav() {
     </>
   );
 }
+
 export default Nav;
