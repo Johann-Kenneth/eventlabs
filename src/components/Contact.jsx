@@ -22,7 +22,7 @@ function Contact() {
 
         <a
           className="contact-button"
-          href="eventlabsentertainments@gmail.com"
+          href="mailto:eventlabsentertainments@gmail.com?subject=Event%20Enquiry"
         >
           START A CONVERSATION <b>↗</b>
         </a>
