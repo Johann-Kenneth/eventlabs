@@ -138,7 +138,7 @@
   will-change: transform, opacity;
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1280px) {
   .audience-intro {
     font-size: clamp(65px, 8.5vw, 115px);
   }
@@ -162,7 +162,7 @@
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .audience {
     padding-top: 80px;
     padding-bottom: 90px;
@@ -216,7 +216,7 @@
     font-size: 14vw;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .audience {
     padding-top: 70px;
     padding-bottom: 80px;
@@ -308,7 +308,7 @@
   }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 480px) {
   .audience {
     padding-top: 65px;
     padding-bottom: 70px;

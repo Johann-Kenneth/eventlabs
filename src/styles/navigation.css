@@ -215,12 +215,12 @@
   }
 
   .nav-brand {
-    width: 54px;
+    width: 200px;
     height: 40px;
   }
 
   .nav.scrolled .nav-brand {
-    width: 50px;
+    width: 200px;
     height: 37px;
   }
 
@@ -233,7 +233,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .nav {
     top: 16px;
     height: 50px;
@@ -241,12 +241,12 @@
   }
 
   .nav-brand {
-    width: 52px;
+    width: 180px;
     height: 38px;
   }
 
   .nav.scrolled .nav-brand {
-    width: 48px;
+    width: 180px;
     height: 35px;
   }
 
@@ -289,12 +289,12 @@
   }
 
   .nav-brand {
-    width: 49px;
+    width: 160px;
     height: 36px;
   }
 
   .nav.scrolled .nav-brand {
-    width: 46px;
+    width: 160px;
     height: 34px;
   }
 

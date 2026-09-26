@@ -58,7 +58,7 @@
   transform-origin: left;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 480px) {
   .loader-brand b {
     font-size: clamp(42px, 13vw, 70px);
   }
@@ -75,7 +75,7 @@
   }
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .loader-brand b {
     font-size: clamp(48px, 12vw, 80px);
   }
@@ -89,7 +89,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .loader-brand b {
     font-size: clamp(55px, 9vw, 95px);
   }
@@ -99,7 +99,7 @@
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1279px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
   .loader-brand b {
     font-size: clamp(60px, 8vw, 105px);
   }

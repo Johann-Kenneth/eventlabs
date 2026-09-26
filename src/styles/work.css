@@ -389,14 +389,11 @@
   transform: scaleX(0);
 }
 
-/* =========================
-   TABLET
-========================= */
 
 @media
-(min-width: 768px)
+(min-width: 769px)
 and
-(max-width: 1023px) {
+(max-width: 1024px) {
 
   .work-head {
     padding-top: 75px;
@@ -454,9 +451,9 @@ and
 ========================= */
 
 @media
-(min-width: 1024px)
+(min-width: 1025px)
 and
-(max-width: 1279px) {
+(max-width: 1280px) {
 
   .work-card {
     width:
@@ -475,9 +472,7 @@ and
   }
 }
 
-/* =========================
-   LARGE DESKTOP
-========================= */
+
 
 @media (min-width: 1280px) {
 
@@ -513,11 +508,7 @@ and
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
   .work {
     min-height: auto;

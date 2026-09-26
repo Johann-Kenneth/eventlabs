@@ -48,7 +48,7 @@
   color: #666;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 480px) {
   .contact {
     min-height: 100svh;
   }
@@ -85,7 +85,7 @@
   }
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .contact {
     min-height: 100svh;
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .contact-main {
     width: calc(100% - var(--index));
     margin-left: calc(var(--index) + var(--content-gap));
