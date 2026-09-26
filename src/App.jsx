@@ -10,8 +10,8 @@ import EventOverlay from "./components/EventOverlay";
 import Capabilities from "./components/Capabilities";
 import Audience from "./components/Audience";
 import Contact from "./components/Contact";
-import "./styles/index.css";
 
+import "./styles/index.css";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,24 +20,23 @@ export default function App() {
   return (
     <>
       {!loaded && (
-        <Loader onDone={() => setLoaded(true)} />
+        <Loader
+          onDone={() => {
+            console.log("LOADER FINISHED");
+            setLoaded(true);
+          }}
+        />
       )}
 
       <Cursor />
-
       <Nav />
 
       <main>
-        <Hero />
-
+        <Hero loaded={loaded} />
         <Manifesto />
-
         <Work onOpen={setSelected} />
-
         <Capabilities />
-
         <Audience />
-
         <Contact />
       </main>
 

@@ -44,31 +44,6 @@ video {
   color: var(--red);
 }
 
-.eyebrow,
-.tag,
-.hero-meta,
-.loader,
-.menu,
-.work-num,
-.work-open,
-.work-info p,
-.work-info > span,
-.service > span,
-.service > p,
-footer,
-.close,
-.overlay-content > span,
-.overlay-content > p,
-.tags,
-.menu-panel > span,
-.menu-panel > p {
-  font-family: "DM Mono", monospace;
-  font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 .section {
   position: relative;
   width: 100%;
@@ -180,4 +155,9 @@ footer,
 .description {
   font-size: 20px;
   line-height: 1.7;
+}
+@media (max-width: 767px) {
+  .section {
+    min-height: auto;
+  }
 }

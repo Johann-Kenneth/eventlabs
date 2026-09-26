@@ -3,19 +3,23 @@
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
+  background: #050505;
 }
 
 .work-head {
   position: relative;
-  z-index: 10;
-  top: auto;
-  left: auto;
+  z-index: 20;
+
   width: calc(100% - (var(--page) * 2));
   margin: 0 var(--page);
+
   padding-top: 7vh;
+  padding-bottom: 4vh;
+
   display: grid;
   grid-template-columns: var(--index) minmax(0, 1fr);
   column-gap: var(--content-gap);
+
   pointer-events: none;
 }
 
@@ -28,139 +32,292 @@
 }
 
 .work-head .eyebrow {
-  margin: 0 0 28px;
+  margin: 0 0 25px;
   color: #777;
+  font-size: 18px;
+  line-height: 1.3;
 }
 
 .work-head h2 {
   margin: 0;
-  font-size: clamp(45px, 6.2vw, 100px);
+
+  font-size: clamp(
+    45px,
+    6.2vw,
+    100px
+  );
+
   line-height: 0.82;
   font-weight: 800;
   letter-spacing: -0.07em;
 }
 
+/* =========================
+   HORIZONTAL TRACK
+========================= */
+
 .work-track {
   position: relative;
+
   display: flex;
   align-items: flex-start;
+
   width: max-content;
   min-width: 100vw;
-  height: calc(100vh - 30vh);
+
+  height: calc(100vh - 255px);
+
   gap: 42px;
-  padding: 6vh var(--page) 4vh;
+
+  padding:
+    2vh
+    var(--page)
+    60px;
+
+  will-change: transform;
 }
+
+/* =========================
+   CARD
+========================= */
 
 .work-card {
   position: relative;
-  width: min(67vw, 900px);
+
+  width: min(64vw, 900px);
+
   flex: 0 0 auto;
+
+  transform-origin: center center;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
 }
+
+/* =========================
+   MEDIA
+========================= */
 
 .work-media {
   position: relative;
+
   width: 100%;
-  height: 62vh;
-  min-height: 430px;
+
+  height: 51vh;
+  min-height: 360px;
+
   overflow: hidden;
+
   background: #151515;
+
+  will-change: transform;
 }
 
 .work-media video {
   position: absolute;
-  inset: -3%;
-  width: 106%;
-  height: 106%;
+
+  inset: -5%;
+
+  width: 110%;
+  height: 110%;
+
   object-fit: cover;
-  filter: saturate(0.8);
+
+  filter: saturate(0.85);
+
+  will-change: transform;
+
   transition:
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.5s;
+    transform 1s
+      cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ),
+    filter 0.6s ease;
 }
 
-.work-card:hover .work-media video {
-  transform: scale(1.07);
+.work-card:hover
+.work-media video {
+  transform: scale(1.06);
   filter: saturate(1);
 }
 
 .work-shade {
   position: absolute;
   inset: 0;
+
+  pointer-events: none;
+
   background:
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.18),
-      transparent 40%,
-      rgba(0, 0, 0, 0.8)
+      rgba(0, 0, 0, 0.12),
+      transparent 45%,
+      rgba(0, 0, 0, 0.82)
     );
 }
 
+/* =========================
+   CARD TOP
+========================= */
+
 .work-num {
   position: absolute;
+
   z-index: 2;
+
   top: 20px;
   left: 20px;
+
+  font-size: 12px;
 }
 
 .work-open {
   position: absolute;
+
   z-index: 2;
+
   top: 20px;
   right: 20px;
+
   opacity: 0.7;
+
+  font-size: 12px;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
+
+.work-card:hover
+.work-open {
+  opacity: 1;
+  transform:
+    translate(4px, -4px);
+}
+
+/* =========================
+   TITLE
+========================= */
 
 .work-title {
   position: absolute;
+
   z-index: 2;
+
   left: 25px;
   right: 25px;
   bottom: 25px;
+
+  will-change: transform;
 }
 
 .work-title small {
   color: #aaa;
-  font: 10px "DM Mono";
+
+  font:
+    12px "DM Mono",
+    monospace;
+
   letter-spacing: 0.12em;
 }
 
 .work-title strong {
   display: block;
-  margin-top: 10px;
-  font-size: clamp(42px, 6vw, 90px);
+
+  margin-top: 8px;
+
+  font-size:
+    clamp(
+      42px,
+      5.5vw,
+      82px
+    );
+
   line-height: 0.82;
+
   font-weight: 800;
+
   letter-spacing: -0.07em;
 }
 
+/* =========================
+   INFORMATION BELOW VIDEO
+========================= */
+
 .work-info {
   display: flex;
-  align-items: baseline;
+
+  align-items: center;
   justify-content: space-between;
-  margin-top: 13px;
-  padding-top: 13px;
-  border-top: 1px solid var(--line);
+
+  height: 58px;
+
+  margin-top: 10px;
+
+  padding-top: 10px;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  will-change: opacity;
 }
 
 .work-info h3 {
   margin: 0;
-  font-size: 22px;
+
+  font-size: 20px;
+  line-height: 1.1;
 }
 
 .work-info p,
 .work-info > span {
-  margin: 5px 0 0;
+  margin: 4px 0 0;
+
   color: #777;
+
+  font-size: 12px;
+  line-height: 1.3;
 }
 
+.work-info > span {
+  margin: 0;
+}
+
+/* =========================
+   MORE
+========================= */
+
 .more {
-  width: min(55vw, 800px);
-  min-width: 500px;
+  width: min(50vw, 700px);
+
+  min-width: 450px;
+
   flex: 0 0 auto;
-  padding-right: var(--page);
-  font-size: clamp(80px, 12vw, 190px);
+
+  padding-right:
+    var(--page);
+
+  align-self: flex-start;
+
+  padding-top: 10vh;
+
+  font-size:
+    clamp(
+      75px,
+      11vw,
+      175px
+    );
+
   line-height: 0.75;
+
   font-weight: 800;
+
   letter-spacing: -0.09em;
 }
 
@@ -175,156 +332,98 @@
 
 .more small {
   display: block;
-  margin-top: 35px;
+
+  max-width: 350px;
+
+  margin-top: 30px;
+
   color: #666;
-  font: 10px "DM Mono";
+
+  font:
+    12px "DM Mono",
+    monospace;
+
+  line-height: 1.4;
+
   letter-spacing: 0.12em;
 }
 
-@media (max-width: 479px) {
-  .work {
-    min-height: auto;
-  }
-
-  .work-head {
-    width: calc(100% - (var(--page) * 2));
-    margin: 0 var(--page);
-    padding-top: 70px;
-    display: block;
-  }
-
-  .work-head .tag {
-    margin-bottom: 35px;
-  }
-
-  .work-head .eyebrow {
-    margin-bottom: 22px;
-  }
-
-  .work-head h2 {
-    font-size: clamp(48px, 13vw, 80px);
-    line-height: 0.84;
-  }
-
-  .work-track {
-    height: auto;
-    min-width: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 55px;
-    padding: 55px var(--page) 80px;
-  }
-
-  .work-card {
-    width: 100%;
-  }
-
-  .work-media {
-    height: 53svh;
-    min-height: 320px;
-    max-height: 480px;
-  }
-
-  .work-title {
-    left: 18px;
-    right: 18px;
-    bottom: 18px;
-  }
-
-  .work-title strong {
-    font-size: clamp(38px, 10vw, 58px);
-  }
-
-  .work-info {
-    display: block;
-  }
-
-  .work-info h3 {
-    font-size: 18px;
-  }
-
-  .work-info p,
-  .work-info > span {
-    font-size: 9px;
-  }
-
-  .more {
-    width: 100%;
-    min-width: 0;
-    padding-right: 0;
-    font-size: clamp(70px, 18vw, 120px);
-  }
-
-  .more small {
-    margin-top: 25px;
-  }
+.work-progress {
+  position: fixed;
+  left: var(--page);
+  right: var(--page);
+  bottom: 75px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
-  .work-head {
-    width: calc(100% - (var(--page) * 2));
-    margin: 0 var(--page);
-    padding-top: 80px;
-    display: block;
-  }
-
-  .work-head .tag {
-    margin-bottom: 38px;
-  }
-
-  .work-head h2 {
-    font-size: clamp(52px, 12vw, 90px);
-  }
-
-  .work-track {
-    height: auto;
-    min-width: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-    padding: 60px var(--page) 90px;
-  }
-
-  .work-card {
-    width: 100%;
-  }
-
-  .work-media {
-    height: 55vh;
-    min-height: 350px;
-  }
-
-  .work-title strong {
-    font-size: clamp(40px, 9vw, 60px);
-  }
-
-  .work-info h3 {
-    font-size: 20px;
-  }
-
-  .more {
-    width: 100%;
-    min-width: 0;
-    padding-right: 0;
-    font-size: clamp(75px, 17vw, 130px);
-  }
+.work-progress-current,
+.work-progress > span:last-child {
+  flex: 0 0 auto;
+  font-family: "DM Mono";
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.12em;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+.work-progress-track {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.work-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media
+(min-width: 768px)
+and
+(max-width: 1023px) {
+
   .work-head {
     padding-top: 75px;
+    padding-bottom: 35px;
   }
 
   .work-head h2 {
-    font-size: clamp(50px, 6.5vw, 80px);
+    font-size:
+      clamp(
+        50px,
+        6.5vw,
+        80px
+      );
   }
 
   .work-track {
-    height: calc(100vh - 250px);
+    height:
+      calc(
+        100vh - 230px
+      );
+
     gap: 32px;
-    padding: 55px var(--page) 40px;
+
+    padding:
+      2vh
+      var(--page)
+      55px;
   }
 
   .work-card {
@@ -332,27 +431,43 @@
   }
 
   .work-media {
-    height: 58vh;
-    min-height: 400px;
+    height: 48vh;
+    min-height: 320px;
   }
 
   .work-title strong {
-    font-size: clamp(45px, 6vw, 70px);
+    font-size:
+      clamp(
+        45px,
+        6vw,
+        70px
+      );
   }
 
-  .more {
-    width: 55vw;
-    min-width: 420px;
+  .work-info {
+    height: 55px;
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1279px) {
+/* =========================
+   DESKTOP
+========================= */
+
+@media
+(min-width: 1024px)
+and
+(max-width: 1279px) {
+
   .work-card {
-    width: min(68vw, 900px);
+    width:
+      min(
+        67vw,
+        900px
+      );
   }
 
   .work-media {
-    height: 62vh;
+    height: 51vh;
   }
 
   .work-track {
@@ -360,14 +475,28 @@
   }
 }
 
+/* =========================
+   LARGE DESKTOP
+========================= */
+
 @media (min-width: 1280px) {
+
+  .work-head {
+    padding-top: 6vh;
+    padding-bottom: 3vh;
+  }
+
   .work-card {
-    width: min(64vw, 1050px);
+    width:
+      min(
+        63vw,
+        1050px
+      );
   }
 
   .work-media {
-    height: 64vh;
-    min-height: 500px;
+    height: 52vh;
+    min-height: 390px;
   }
 
   .work-track {
@@ -375,6 +504,146 @@
   }
 
   .work-title strong {
-    font-size: clamp(60px, 6vw, 100px);
+    font-size:
+      clamp(
+        55px,
+        5.5vw,
+        95px
+      );
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 767px) {
+
+  .work {
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .work-head {
+    display: block;
+
+    width:
+      calc(
+        100% -
+        (var(--page) * 2)
+      );
+
+    margin:
+      0 var(--page);
+
+    padding-top: 70px;
+    padding-bottom: 10px;
+  }
+
+  .work-head .tag {
+    margin-bottom: 30px;
+  }
+
+  .work-head .eyebrow {
+    font-size: 16px;
+  }
+
+  .work-head h2 {
+    margin-top: 25px;
+
+    font-size:
+      clamp(
+        48px,
+        13vw,
+        82px
+      );
+  }
+
+  .work-track {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 55px;
+
+    padding:
+      55px
+      var(--page)
+      90px;
+
+    overflow: visible;
+  }
+
+  .work-card {
+    width: 100%;
+    max-width: 100%;
+
+    flex: none;
+  }
+
+  .work-media {
+    width: 100%;
+
+    height: 68vw;
+
+    min-height: 300px;
+    max-height: 500px;
+  }
+
+  .work-title {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .work-title strong {
+    font-size:
+      clamp(
+        38px,
+        11vw,
+        64px
+      );
+  }
+
+  .work-info {
+    height: auto;
+
+    min-height: 55px;
+
+    display: flex;
+  }
+
+  .work-info h3 {
+    font-size: 19px;
+  }
+
+  .work-info p,
+  .work-info > span {
+    font-size: 11px;
+  }
+
+  .more {
+    width: 100%;
+    min-width: 0;
+
+    padding:
+      20px 0 40px;
+
+    font-size:
+      clamp(
+        70px,
+        18vw,
+        130px
+      );
+  }
+
+  .work-progress {
+    display: none;
   }
 }

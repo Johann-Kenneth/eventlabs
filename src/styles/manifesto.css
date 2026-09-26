@@ -14,7 +14,7 @@
 }
 
 .manifesto > div:last-child {
-  width: calc(100% - var(--page) - var(--page));
+  width: calc(100% - (var(--page) * 2));
   max-width: none;
   margin-left: var(--page);
   padding-left: 110px;
@@ -24,6 +24,8 @@
 .manifesto .eyebrow {
   margin: 0 0 40px;
   color: #777;
+  font-size: 18px;
+  line-height: 1.3;
 }
 
 .manifesto .mega {
@@ -47,6 +49,7 @@
   display: block;
   width: max-content;
   max-width: 100%;
+  will-change: transform, opacity;
 }
 
 .manifesto-bottom {
@@ -85,6 +88,7 @@
 
 @media (max-width: 479px) {
   .manifesto {
+    min-height: auto;
     padding-top: 110px;
     padding-bottom: 90px;
   }
@@ -101,6 +105,7 @@
 
   .manifesto .eyebrow {
     margin-bottom: 28px;
+    font-size: 16px;
   }
 
   .manifesto .mega {
@@ -116,19 +121,20 @@
 
   .manifesto-description {
     max-width: 100%;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
   }
 
   .manifesto-details {
     margin-top: 28px;
     gap: 10px;
-    font-size: 9px;
+    font-size: 14px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
   .manifesto {
+    min-height: auto;
     padding-top: 125px;
     padding-bottom: 100px;
   }
@@ -143,6 +149,10 @@
     padding-left: 0;
   }
 
+  .manifesto .eyebrow {
+    font-size: 17px;
+  }
+
   .manifesto .mega {
     font-size: clamp(58px, 13vw, 100px);
   }
@@ -155,7 +165,7 @@
 
   .manifesto-description {
     max-width: 500px;
-    font-size: 16px;
+    font-size: 19px;
   }
 
   .manifesto-details {
@@ -165,6 +175,7 @@
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .manifesto {
+    min-height: auto;
     padding-top: 110px;
     padding-bottom: 110px;
   }
@@ -187,6 +198,7 @@
 
   .manifesto-description {
     max-width: 430px;
+    font-size: 19px;
   }
 }
 
@@ -197,6 +209,10 @@
 
   .manifesto-bottom {
     margin-top: 65px;
+  }
+
+  .manifesto-description {
+    font-size: 20px;
   }
 }
 
@@ -211,5 +227,44 @@
 
   .manifesto-bottom {
     margin-top: 80px;
+  }
+
+  .manifesto-description {
+    font-size: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .manifesto-content {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .manifesto .mega {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(42px, 11vw, 62px);
+    line-height: 0.88;
+    letter-spacing: -0.055em;
+  }
+
+  .manifesto .mega .clip {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .manifesto .mega .manifesto-line {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .manifesto .mega {
+    font-size: clamp(38px, 10.5vw, 52px);
+    letter-spacing: -0.05em;
   }
 }

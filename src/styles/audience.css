@@ -1,209 +1,368 @@
 .audience {
+  min-height: 100vh;
+  padding-top: 10vw;
+  padding-bottom: 11vw;
+  overflow: hidden;
+}
+
+.audience-top {
   display: grid;
-  grid-template-columns:
-    var(--index)
-    minmax(0, 1fr);
+  grid-template-columns: var(--index) minmax(0, 1fr);
   column-gap: var(--content-gap);
   align-items: start;
 }
 
-.audience > .tag {
+.audience-top > .tag {
   position: static;
 }
 
-.audience > div:last-child {
+.audience-heading {
   min-width: 0;
-  width: 100%;
 }
 
-.audience .eyebrow {
-  margin: 0 0 40px;
+.audience-heading .eyebrow {
+  margin: 0 0 42px;
   color: #777;
+  font-size: 18px;
+  line-height: 1.3;
 }
 
 .audience-intro {
   margin: 0;
-  font-size: clamp(55px, 7vw, 110px);
-  line-height: 0.84;
+  max-width: 1100px;
+  font-size: clamp(70px, 9vw, 150px);
+  line-height: 0.8;
   font-weight: 800;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.075em;
 }
 
 .audience-description {
-  max-width: 560px;
-  margin: 40px 0 80px;
+  max-width: 600px;
+  margin: 52px 0 0;
   color: #999;
   font-size: 20px;
   line-height: 1.7;
 }
 
 .audience-list {
+  position: relative;
   width: 100%;
-  border-top: 1px solid var(--line);
+  margin-top: 130px;
 }
 
-.audience-row {
+.audience-item {
+  position: relative;
   width: 100%;
-  min-height: 150px;
+  min-height: 145px;
   display: grid;
-  grid-template-columns:
-    60px
-    minmax(0, 1fr)
-    50px;
-  column-gap: 25px;
+  grid-template-columns: 65px minmax(0, 1fr) 220px 45px;
   align-items: center;
-  border-bottom: 1px solid var(--line);
-  transition:
-    padding 0.4s,
-    background 0.4s;
+  column-gap: 25px;
+  cursor: pointer;
 }
 
-.audience-row > * {
-  min-width: 0;
+.audience-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.audience-row:hover {
-  padding-left: 20px;
-  background: #090909;
+.audience-item:hover::before {
+  transform: scaleX(1);
 }
 
-.audience-row span {
-  color: #666;
-  font: 10px "DM Mono";
+.audience-number {
+  position: relative;
+  z-index: 2;
+  color: #555;
+  font-family: "DM Mono";
+  font-size: 12px;
+  letter-spacing: 0.1em;
 }
 
-.audience-row h2 {
-  margin: 0;
-  font-size: clamp(45px, 7vw, 110px);
+.audience-name {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(48px, 7vw, 112px);
   line-height: 0.8;
   font-weight: 800;
   letter-spacing: -0.07em;
+  white-space: nowrap;
+  will-change: transform;
 }
 
-.audience-row b {
-  font-size: 28px;
-  font-weight: 300;
+.audience-type {
+  position: relative;
+  z-index: 2;
+  color: #666;
+  font-family: "DM Mono";
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+  will-change: transform;
+}
+
+.audience-arrow {
+  position: relative;
+  z-index: 2;
+  color: #888;
+  font-size: 26px;
+  line-height: 1;
   text-align: right;
+  opacity: 0.45;
+  will-change: transform;
+}
+
+.audience-ghost {
+  position: absolute;
+  z-index: 0;
+  left: 7%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: clamp(110px, 16vw, 270px);
+  font-weight: 800;
+  line-height: 0.7;
+  letter-spacing: -0.08em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 1279px) {
+  .audience-intro {
+    font-size: clamp(65px, 8.5vw, 115px);
+  }
+
+  .audience-description {
+    max-width: 560px;
+  }
+
+  .audience-list {
+    margin-top: 105px;
+  }
+
+  .audience-item {
+    min-height: 130px;
+    grid-template-columns: 50px minmax(0, 1fr) 180px 40px;
+    column-gap: 20px;
+  }
+
+  .audience-name {
+    font-size: clamp(45px, 6.5vw, 90px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .audience {
+    padding-top: 80px;
+    padding-bottom: 90px;
+  }
+
+  .audience-top {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .audience-top > .tag {
+    margin-bottom: 0;
+  }
+
+  .audience-heading .eyebrow {
+    margin-bottom: 32px;
+  }
+
+  .audience-intro {
+    font-size: clamp(62px, 9vw, 92px);
+  }
+
+  .audience-description {
+    margin-top: 38px;
+    font-size: 19px;
+  }
+
+  .audience-list {
+    margin-top: 85px;
+  }
+
+  .audience-item {
+    min-height: 115px;
+    grid-template-columns: 42px minmax(0, 1fr) 150px 32px;
+    column-gap: 15px;
+  }
+
+  .audience-name {
+    font-size: clamp(42px, 7vw, 70px);
+  }
+
+  .audience-type {
+    font-size: 10px;
+  }
+
+  .audience-arrow {
+    font-size: 22px;
+  }
+
+  .audience-ghost {
+    font-size: 14vw;
+  }
+}
+@media (max-width: 767px) {
+  .audience {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+
+  .audience-top {
+    display: block;
+  }
+
+  .audience-top > .tag {
+    margin-bottom: 38px;
+  }
+
+  .audience-heading .eyebrow {
+    margin-bottom: 28px;
+    font-size: 17px;
+  }
+
+  .audience-intro {
+    font-size: clamp(52px, 13vw, 82px);
+    line-height: 0.84;
+    letter-spacing: -0.065em;
+  }
+
+  .audience-description {
+    max-width: 100%;
+    margin-top: 34px;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .audience-list {
+    margin-top: 70px;
+  }
+
+  .audience-item {
+    min-height: 125px;
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) 25px;
+    column-gap: 12px;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .audience-item:nth-child(even) .audience-name {
+    transform: translateX(12px);
+  }
+
+  .audience-item:nth-child(even) .audience-number {
+    transform: translateX(4px);
+  }
+
+  .audience-number {
+    font-size: 10px;
+    color: #777;
+  }
+
+  .audience-name {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(38px, 10.5vw, 64px);
+    line-height: 0.84;
+    letter-spacing: -0.065em;
+    white-space: normal;
+  }
+
+  .audience-type {
+    display: none;
+  }
+
+  .audience-arrow {
+    font-size: 20px;
+    opacity: 0.7;
+  }
+
+  .audience-ghost {
+    display: block;
+    left: 12%;
+    top: 50%;
+    font-size: 20vw;
+    line-height: 0.7;
+    opacity: 0.025;
+    transform: translateY(-50%);
+  }
+
+  .audience-item::before {
+    transform: scaleX(1);
+    opacity: 0.45;
+  }
 }
 
 @media (max-width: 479px) {
   .audience {
-    display: block;
+    padding-top: 65px;
+    padding-bottom: 70px;
   }
 
-  .audience .eyebrow {
-    margin-bottom: 30px;
+  .audience-top > .tag {
+    margin-bottom: 32px;
+  }
+
+  .audience-heading .eyebrow {
+    font-size: 15px;
   }
 
   .audience-intro {
-    font-size: clamp(48px, 13vw, 78px);
+    font-size: clamp(44px, 12.5vw, 62px);
     line-height: 0.86;
   }
 
   .audience-description {
-    max-width: 330px;
-    margin: 30px 0 55px;
+    margin-top: 28px;
+    font-size: 17px;
     line-height: 1.6;
   }
 
-  .audience-row {
-    min-height: 100px;
-    grid-template-columns:
-      28px
-      minmax(0, 1fr)
-      25px;
-    column-gap: 10px;
+  .audience-list {
+    margin-top: 55px;
   }
 
-  .audience-row h2 {
-    font-size: clamp(38px, 10vw, 58px);
+  .audience-item {
+    min-height: 105px;
+    grid-template-columns: 25px minmax(0, 1fr) 20px;
+    column-gap: 9px;
   }
 
-  .audience-row b {
-    font-size: 20px;
+  .audience-item:nth-child(even) .audience-name {
+    transform: translateX(8px);
   }
 
-  .audience-row:hover {
-    padding-left: 10px;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 767px) {
-  .audience {
-    display: block;
+  .audience-name {
+    font-size: clamp(32px, 9.5vw, 48px);
+    letter-spacing: -0.055em;
   }
 
-  .audience-intro {
-    font-size: clamp(55px, 12vw, 90px);
+  .audience-number {
+    font-size: 9px;
   }
 
-  .audience-description {
-    max-width: 500px;
-    margin: 35px 0 65px;
+  .audience-arrow {
+    font-size: 18px;
   }
 
-  .audience-row {
-    min-height: 115px;
-    grid-template-columns:
-      35px
-      minmax(0, 1fr)
-      30px;
-    column-gap: 12px;
-  }
-
-  .audience-row h2 {
-    font-size: clamp(40px, 9vw, 65px);
-  }
-
-  .audience-row b {
-    font-size: 22px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .audience-intro {
-    font-size: clamp(55px, 7vw, 90px);
-  }
-
-  .audience-description {
-    max-width: 470px;
-    margin-bottom: 70px;
-  }
-
-  .audience-row {
-    min-height: 125px;
-    grid-template-columns:
-      45px
-      minmax(0, 1fr)
-      35px;
-    column-gap: 15px;
-  }
-
-  .audience-row h2 {
-    font-size: clamp(45px, 6.5vw, 75px);
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .audience-intro {
-    font-size: clamp(65px, 7vw, 100px);
-  }
-
-  .audience-description {
-    max-width: 520px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .audience-intro {
-    font-size: clamp(80px, 7vw, 120px);
-  }
-
-  .audience-description {
-    max-width: 600px;
-  }
-
-  .audience-row {
-    min-height: 170px;
+  .audience-ghost {
+    left: 5%;
+    font-size: 19vw;
+    opacity: 0.025;
   }
 }

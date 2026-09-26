@@ -1,80 +1,138 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Hero() {
-  const ref = useRef();
+function Hero({ loaded }) {
+  const ref = useRef(null);
+
+  console.log("HERO COMPONENT RENDERED:", loaded);
+
+  useLayoutEffect(() => {
+    const hero = ref.current;
+
+    if (!hero) return;
+
+    const eyebrow = hero.querySelector(".hero-eyebrow");
+    const words = hero.querySelectorAll(".hero-word");
+    const description = hero.querySelector(".hero-description");
+    const button = hero.querySelector(".hero-button");
+
+    gsap.set(eyebrow, {
+      y: 30,
+      opacity: 0,
+    });
+
+    gsap.set(words, {
+      yPercent: 110,
+      opacity: 0,
+    });
+
+    gsap.set(description, {
+      y: 30,
+      opacity: 0,
+    });
+
+    gsap.set(button, {
+      y: 25,
+      opacity: 0,
+    });
+  }, []);
 
   useEffect(() => {
+    if (!loaded) {
+      console.log("HERO WAITING FOR LOADER");
+      return;
+    }
+
+    console.log("HERO ANIMATION STARTED");
+
+    const hero = ref.current;
+
+    if (!hero) {
+      console.error("HERO REF NOT FOUND");
+      return;
+    }
+
+    const eyebrow = hero.querySelector(".hero-eyebrow");
+    const words = hero.querySelectorAll(".hero-word");
+    const description = hero.querySelector(".hero-description");
+    const button = hero.querySelector(".hero-button");
+    const video = hero.querySelector(".hero-video");
+    const content = hero.querySelector(".hero-content");
+
     const ctx = gsap.context(() => {
-      gsap
-        .timeline({
-          defaults: {
-            ease: "power4.out",
-          },
-        })
-        .from(".hero-eyebrow", {
-          y: 25,
-          opacity: 0,
+      const timeline = gsap.timeline({
+        defaults: {
+          ease: "power4.out",
+        },
+      });
+
+      timeline
+        .to(eyebrow, {
+          y: 0,
+          opacity: 1,
           duration: 0.7,
         })
-        .from(
-          ".hero-word",
+        .to(
+          words,
           {
-            yPercent: 120,
+            yPercent: 0,
+            opacity: 1,
             duration: 1,
-            stagger: 0.08,
+            stagger: 0.14,
           },
-          "-=.35"
+          "-=0.25"
         )
-        .from(
-          ".hero-description",
+        .to(
+          description,
           {
-            y: 20,
-            opacity: 0,
+            y: 0,
+            opacity: 1,
             duration: 0.7,
           },
-          "-=.55"
+          "-=0.35"
         )
-        .from(
-          ".hero-button",
+        .to(
+          button,
           {
-            y: 20,
-            opacity: 0,
+            y: 0,
+            opacity: 1,
             duration: 0.6,
           },
-          "-=.5"
+          "-=0.35"
         );
 
-      gsap.to(".hero-video", {
+      gsap.to(video, {
         scale: 1.13,
         yPercent: 8,
         ease: "none",
         scrollTrigger: {
-          trigger: ".hero",
+          trigger: hero,
           start: "top top",
           end: "bottom top",
           scrub: true,
         },
       });
 
-      gsap.to(".hero-content", {
+      gsap.to(content, {
         yPercent: -15,
         opacity: 0.35,
         ease: "none",
         scrollTrigger: {
-          trigger: ".hero",
+          trigger: hero,
           start: "top top",
           end: "bottom top",
           scrub: true,
         },
       });
-    }, ref);
+    }, hero);
 
-    return () => ctx.revert();
-  }, []);
+    return () => {
+      ctx.revert();
+    };
+  }, [loaded]);
 
   return (
     <section className="hero" ref={ref}>
@@ -96,7 +154,7 @@ function Hero() {
 
       <div className="hero-content">
         <p className="hero-eyebrow">
-          EVENT MANAGEMENT / PRODUCTION / ENTERTAINMENT
+          EVENT PRODUCTION / CREATIVE / EXECUTION
         </p>
 
         <h1>
@@ -120,8 +178,8 @@ function Hero() {
         </h1>
 
         <p className="hero-description">
-          We create, produce and execute experiences
-          that turn spaces into moments people remember.
+          From the first idea to the final moment, we bring
+          creative vision, production and execution together.
         </p>
 
         <a

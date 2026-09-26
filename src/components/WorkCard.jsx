@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 function WorkCard({ event, onOpen }) {
-  const video = useRef();
+  const video = useRef(null);
+  const card = useRef(null);
 
   const enter = () => {
     video.current?.play().catch(() => {});
@@ -14,8 +15,44 @@ function WorkCard({ event, onOpen }) {
     }
   };
 
+  useEffect(() => {
+    const element = card.current;
+    const media = video.current;
+
+    if (!element || !media) return;
+
+    const isTouchLayout = window.matchMedia(
+      "(max-width: 1023px)"
+    ).matches;
+
+    if (!isTouchLayout) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            media.play().catch(() => {});
+          } else {
+            media.pause();
+            media.currentTime = 0;
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <article
+      ref={card}
       className="work-card"
       data-cursor="OPEN"
       onMouseEnter={enter}
@@ -26,25 +63,18 @@ function WorkCard({ event, onOpen }) {
         <video
           ref={video}
           muted
+          autoPlay={false}
           loop
           playsInline
           preload="metadata"
         >
-          <source
-            src={event.video}
-            type="video/mp4"
-          />
+          <source src={event.video} type="video/mp4" />
         </video>
 
         <div className="work-shade" />
 
-        <span className="work-num">
-          {event.number}
-        </span>
-
-        <span className="work-open">
-          OPEN PROJECT ↗
-        </span>
+        <span className="work-num">{event.number}</span>
+        <span className="work-open">OPEN PROJECT ↗</span>
 
         <div className="work-title">
           <small>{event.category}</small>
@@ -63,4 +93,5 @@ function WorkCard({ event, onOpen }) {
     </article>
   );
 }
+
 export default WorkCard;
