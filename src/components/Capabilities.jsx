@@ -11,9 +11,10 @@ function Capabilities() {
     {
       number: "01",
       label: "STRATEGY / EXECUTION",
-      title: "EVENT\nMANAGEMENT",
+      title: "EVENT MANAGEMENT",
       description:
         "Planning, coordination, logistics and on-ground execution built around one clear direction.",
+      steps: ["PLAN", "COORDINATE", "EXECUTE"],
     },
     {
       number: "02",
@@ -21,6 +22,7 @@ function Capabilities() {
       title: "PRODUCTION",
       description:
         "Stage, sound, lighting, LED, power and technical systems working as one production.",
+      steps: ["STAGE", "TECH", "DELIVER"],
     },
     {
       number: "03",
@@ -28,6 +30,7 @@ function Capabilities() {
       title: "CREATIVE",
       description:
         "Concepts, branding, visual identity and content direction that give every event its character.",
+      steps: ["CONCEPT", "DESIGN", "DEFINE"],
     },
     {
       number: "04",
@@ -35,6 +38,7 @@ function Capabilities() {
       title: "ENTERTAINMENT",
       description:
         "Artists, DJs, anchors, performers and live acts selected to shape the energy of the room.",
+      steps: ["TALENT", "ENERGY", "LIVE"],
     },
   ];
 
@@ -46,36 +50,21 @@ function Capabilities() {
       const eyebrow = section.querySelector(".cap-heading > .eyebrow");
       const heading = section.querySelector(".cap-heading .mega");
       const intro = section.querySelector(".cap-intro");
-      const cards = section.querySelectorAll(".cap-card");
-
-      const headingLines = heading
-        ? heading.innerHTML
-            .split("<br>")
-            .map(() => null)
-        : [];
+      const scenes = gsap.utils.toArray(".cap-scene");
 
       gsap.set(eyebrow, {
-        y: 30,
+        y: 25,
         opacity: 0,
       });
 
       gsap.set(heading, {
-        y: 90,
+        x: -40,
         opacity: 0,
-        scale: 0.96,
       });
 
       gsap.set(intro, {
-        y: 40,
+        x: 30,
         opacity: 0,
-      });
-
-      gsap.set(cards, {
-        y: 120,
-        opacity: 0,
-        rotateX: 8,
-        scale: 0.94,
-        transformOrigin: "center bottom",
       });
 
       const introTimeline = gsap.timeline({
@@ -90,95 +79,94 @@ function Capabilities() {
         .to(eyebrow, {
           y: 0,
           opacity: 1,
-          duration: 0.7,
+          duration: 0.65,
           ease: "power3.out",
         })
         .to(
           heading,
           {
-            y: 0,
+            x: 0,
             opacity: 1,
-            scale: 1,
-            duration: 1.1,
+            duration: 0.9,
             ease: "power4.out",
           },
-          "-=0.35"
+          "-=0.3"
         )
         .to(
           intro,
           {
-            y: 0,
+            x: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: 0.7,
             ease: "power3.out",
           },
-          "-=0.55"
+          "-=0.45"
         );
 
-      gsap.to(cards, {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
-        scale: 1,
-        duration: 1.1,
-        stagger: 0.16,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".cap-grid",
-          start: "top 82%",
-          once: true,
-        },
-      });
-
-      cards.forEach((card, index) => {
-        const number = card.querySelector(".cap-card-number");
-        const label = card.querySelector(".cap-card-label");
-        const title = card.querySelector(".cap-card-main h3");
-        const description = card.querySelector(".cap-card-bottom p");
-        const arrow = card.querySelector(".cap-card-arrow");
-
-        gsap.set([number, label, title, description, arrow], {
-          opacity: 0,
-        });
+      scenes.forEach((scene) => {
+        const number = scene.querySelector(".cap-scene-number");
+        const label = scene.querySelector(".cap-scene-label");
+        const title = scene.querySelector(".cap-scene-title");
+        const description = scene.querySelector(
+          ".cap-scene-description"
+        );
+        const steps = scene.querySelectorAll(".cap-step");
+        const line = scene.querySelector(".cap-scene-line");
+        const marker = scene.querySelector(".cap-scene-marker");
 
         gsap.set(number, {
-          x: -20,
+          x: -15,
+          opacity: 0.25,
         });
 
         gsap.set(label, {
           x: 20,
+          opacity: 0.25,
         });
 
         gsap.set(title, {
-          y: 35,
+          clipPath: "inset(0 100% 0 0)",
+          scaleX: 0.94,
+          transformOrigin: "left center",
         });
 
         gsap.set(description, {
-          y: 20,
+          y: 18,
+          opacity: 0.25,
         });
 
-        gsap.set(arrow, {
-          scale: 0,
+        gsap.set(steps, {
+          y: 12,
+          opacity: 0.25,
+        });
+
+        gsap.set(line, {
+          scaleX: 0,
+          transformOrigin: "left center",
+        });
+
+        gsap.set(marker, {
+          scale: 0.7,
+          opacity: 0.25,
           rotate: -25,
         });
 
-        const cardTimeline = gsap.timeline({
+        const timeline = gsap.timeline({
           scrollTrigger: {
-            trigger: card,
+            trigger: scene,
             start: "top 82%",
-            once: true,
+            end: "center 38%",
+            scrub: 0.7,
           },
-          delay: index * 0.08,
         });
 
-        cardTimeline
+        timeline
           .to(
             number,
             {
               x: 0,
               opacity: 1,
-              duration: 0.55,
-              ease: "power3.out",
+              ease: "none",
             },
             0
           )
@@ -187,111 +175,77 @@ function Capabilities() {
             {
               x: 0,
               opacity: 1,
-              duration: 0.55,
-              ease: "power3.out",
+              ease: "none",
             },
-            0.08
+            0
           )
           .to(
             title,
             {
-              y: 0,
-              opacity: 1,
-              duration: 0.8,
-              ease: "power4.out",
+              clipPath: "inset(0 0% 0 0)",
+              scaleX: 1,
+              ease: "none",
             },
-            0.15
+            0.05
+          )
+          .to(
+            line,
+            {
+              scaleX: 1,
+              ease: "none",
+            },
+            0.16
           )
           .to(
             description,
             {
               y: 0,
               opacity: 1,
-              duration: 0.65,
-              ease: "power3.out",
+              ease: "none",
             },
-            0.35
+            0.2
           )
           .to(
-            arrow,
+            steps,
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.08,
+              ease: "none",
+            },
+            0.25
+          )
+          .to(
+            marker,
             {
               scale: 1,
-              rotate: 0,
               opacity: 1,
-              duration: 0.55,
-              ease: "back.out(1.7)",
+              rotate: 0,
+              ease: "none",
             },
-            0.3
+            0.2
           );
 
-        card.addEventListener("mouseenter", () => {
-          gsap.to(card, {
-            y: -12,
-            duration: 0.45,
-            ease: "power3.out",
-          });
-
-          gsap.to(title, {
-            x: 8,
-            duration: 0.45,
-            ease: "power3.out",
-          });
-
-          gsap.to(number, {
-            x: 8,
-            duration: 0.4,
-            ease: "power3.out",
-          });
-
-          gsap.to(label, {
-            x: 6,
-            duration: 0.4,
-            ease: "power3.out",
-          });
-
-          gsap.to(arrow, {
-            x: 8,
-            y: -8,
-            rotate: 10,
-            scale: 1.15,
-            duration: 0.4,
-            ease: "power3.out",
-          });
+        gsap.to(title, {
+          scaleX: 1.015,
+          scrollTrigger: {
+            trigger: scene,
+            start: "top 55%",
+            end: "bottom 45%",
+            scrub: 1.2,
+          },
+          ease: "none",
         });
 
-        card.addEventListener("mouseleave", () => {
-          gsap.to(card, {
-            y: 0,
-            duration: 0.55,
-            ease: "power3.out",
-          });
-
-          gsap.to(title, {
-            x: 0,
-            duration: 0.55,
-            ease: "power3.out",
-          });
-
-          gsap.to(number, {
-            x: 0,
-            duration: 0.5,
-            ease: "power3.out",
-          });
-
-          gsap.to(label, {
-            x: 0,
-            duration: 0.5,
-            ease: "power3.out",
-          });
-
-          gsap.to(arrow, {
-            x: 0,
-            y: 0,
-            rotate: 0,
-            scale: 1,
-            duration: 0.5,
-            ease: "power3.out",
-          });
+        gsap.to(marker, {
+          rotate: 180,
+          scrollTrigger: {
+            trigger: scene,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.5,
+          },
+          ease: "none",
         });
       });
     }, section);
@@ -324,42 +278,54 @@ function Capabilities() {
         </div>
       </div>
 
-      <div className="cap-grid">
+      <div className="cap-scenes">
         {items.map((item) => (
-          <article
-            className="cap-card"
-            key={item.number}
-            data-cursor="VIEW"
-          >
-            <div className="cap-card-top">
-              <span className="cap-card-number">
+          <article className="cap-scene" key={item.number}>
+            <div className="cap-scene-top">
+              <span className="cap-scene-number">
                 {item.number}
               </span>
 
-              <span className="cap-card-label">
+              <span className="cap-scene-label">
                 {item.label}
               </span>
 
-              <span className="cap-card-arrow">↗</span>
+              <span className="cap-scene-marker">
+                ↗
+              </span>
             </div>
 
-            <div className="cap-card-main">
-              <h3>
-                {item.title.split("\n").map((line, index) => (
-                  <span key={index}>
-                    {line}
-                    {index < item.title.split("\n").length - 1 && <br />}
-                  </span>
-                ))}
+            <div className="cap-scene-body">
+              <h3 className="cap-scene-title">
+                {item.title}
               </h3>
-            </div>
 
-            <div className="cap-card-bottom">
-              <p>{item.description}</p>
-              <span>EVENTLABS / 2026</span>
+              <span className="cap-scene-line" />
+
+              <div className="cap-scene-bottom">
+                <p className="cap-scene-description">
+                  {item.description}
+                </p>
+
+                <div className="cap-steps">
+                  {item.steps.map((step, stepIndex) => (
+                    <span className="cap-step" key={step}>
+                      <b>
+                        {String(stepIndex + 1).padStart(2, "0")}
+                      </b>
+                      {step}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="cap-end">
+        <span>EVENTLABS / PRODUCTION</span>
+        <span>FROM IDEA TO EXECUTION</span>
       </div>
     </section>
   );

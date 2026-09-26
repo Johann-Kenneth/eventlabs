@@ -1,8 +1,9 @@
 .capabilities {
-  min-height: 100vh;
+  min-height: auto;
   padding-top: 9vw;
-  padding-bottom: 10vw;
+  padding-bottom: 9vw;
   background: #080808;
+  overflow: hidden;
 }
 
 .cap-top {
@@ -10,6 +11,7 @@
   grid-template-columns: var(--index) minmax(0, 1fr);
   column-gap: var(--content-gap);
   align-items: start;
+  min-width: 0;
 }
 
 .cap-top > .tag {
@@ -18,6 +20,8 @@
 
 .cap-heading {
   min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .cap-heading > .eyebrow {
@@ -30,210 +34,209 @@
 .cap-heading .mega {
   margin: 0;
   max-width: 1100px;
+  will-change: transform, opacity;
 }
 
 .cap-intro {
-  max-width: 620px;
+  max-width: 680px;
   margin: 52px 0 0;
   color: #999;
   font-size: 20px;
   line-height: 1.7;
-}
-
-.cap-grid {
-  width: 100%;
-  margin-top: 110px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2px;
-  background: #252525;
-}
-
-.cap-card {
-  position: relative;
-  container-type: inline-size;
-  min-width: 0;
-  min-height: 390px;
-  padding: 28px 30px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  box-sizing: border-box;
-  isolation: isolate;
-  background:
-    linear-gradient(
-      145deg,
-      #111111 0%,
-      #0b0b0b 55%,
-      #090909 100%
-    );
-  border: 1px solid rgba(255, 255, 255, 0.035);
-  perspective: 1000px;
   will-change: transform, opacity;
-  transition:
-    background 0.5s ease,
-    border-color 0.5s ease,
-    transform 0.4s ease;
 }
 
-.cap-card::before {
-  content: "";
-  position: absolute;
-  width: 460px;
-  height: 460px;
-  top: -230px;
-  right: -190px;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle,
-      rgba(255, 35, 35, 0.24) 0%,
-      rgba(255, 35, 35, 0.12) 28%,
-      rgba(255, 35, 35, 0.04) 48%,
-      transparent 72%
-    );
-  filter: blur(18px);
-  opacity: 0.75;
-  transform: scale(0.75);
-  transition:
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.7s ease;
-  pointer-events: none;
+.cap-scenes {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 120px;
+  overflow: hidden;
 }
 
-.cap-card::after {
-  content: "";
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  left: -220px;
-  bottom: -220px;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.09) 0%,
-      rgba(255, 255, 255, 0.025) 35%,
-      transparent 70%
-    );
-  filter: blur(25px);
-  opacity: 0.45;
-  transform: scale(0.8);
-  transition:
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.7s ease;
-  pointer-events: none;
-}
-
-.cap-card:hover::before {
-  transform: scale(1.25) translate(-12px, 12px);
-  opacity: 1;
-}
-
-.cap-card:hover::after {
-  transform: scale(1.2) translate(20px, -15px);
-  opacity: 0.7;
-}
-
-.cap-card:hover {
-  background:
-    linear-gradient(
-      145deg,
-      #151515 0%,
-      #0d0d0d 55%,
-      #0b0b0b 100%
-    );
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.cap-card-top {
+.cap-scene {
   position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 45px 1fr auto;
-  align-items: center;
-  gap: 15px;
+  min-height: 520px;
+  max-width: 100%;
+  padding: 38px 0 42px;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  overflow: hidden;
 }
 
-.cap-card-number {
+.cap-scene:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.cap-scene-top {
+  display: grid;
+  grid-template-columns: 65px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 20px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cap-scene-number {
+  color: #ff2020;
+  font-family: "DM Mono";
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  will-change: transform, opacity;
+}
+
+.cap-scene-label {
+  min-width: 0;
+  color: #777;
+  font-family: "DM Mono";
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.13em;
+  will-change: transform, opacity;
+}
+
+.cap-scene-marker {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: #777;
+  font-size: 18px;
+  line-height: 1;
+  will-change: transform, opacity;
+  flex-shrink: 0;
+}
+
+.cap-scene-body {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 95px;
+  overflow: visible;
+}
+
+.cap-scene-title {
+  display: block;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  color: #f4f4f4;
+  font-size: clamp(64px, 9vw, 150px);
+  line-height: 0.76;
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  white-space: nowrap;
+  will-change: transform, opacity;
+  transform-origin: left center;
+}
+
+.cap-scene-line {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 1px;
+  margin-top: 55px;
+  background: #ff2020;
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.cap-scene-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: 8vw;
+  align-items: start;
+  margin-top: 34px;
+  min-width: 0;
+}
+
+.cap-scene-description {
+  max-width: 600px;
+  margin: 0;
+  color: #aaa;
+  font-size: 20px;
+  line-height: 1.65;
+  will-change: transform, opacity;
+}
+
+.cap-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  min-width: 0;
+}
+
+.cap-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #999;
+  font-family: "DM Mono";
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.cap-step b {
+  color: #555;
+  font-size: 11px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.cap-step:not(:last-child)::after {
+  content: "→";
+  margin-left: 13px;
+  color: #444;
+}
+
+.cap-end {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 28px;
   color: #666;
   font-family: "DM Mono";
   font-size: 12px;
   letter-spacing: 0.1em;
 }
 
-.cap-card-label {
-  color: #666;
-  font-family: "DM Mono";
-  font-size: 11px;
-  letter-spacing: 0.1em;
-}
-
-.cap-card-arrow {
-  color: #888;
-  font-size: 25px;
-  line-height: 1;
-}
-
-.cap-card-main {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  margin-bottom: 55px;
-}
-
-.cap-card-main h3 {
-  margin: 0;
-  font-size: clamp(42px, 5vw, 82px);
-  line-height: 0.84;
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
-  will-change: transform;
-}
-
-.cap-card-main h3 span {
-  display: inline-block;
-  max-width: 100%;
-}
-
-.cap-card-bottom {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 30px;
-  align-items: end;
-}
-
-.cap-card-bottom p {
-  max-width: 420px;
-  margin: 0;
-  color: #888;
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.cap-card-bottom > span {
-  color: #555;
-  font-family: "DM Mono";
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-}
-
-@media (max-width: 1280px) {
-  .cap-card {
-    min-height: 360px;
+@media (max-width: 1279px) {
+  .cap-scenes {
+    margin-top: 100px;
   }
 
-  .cap-card-main h3 {
-    font-size: clamp(38px, 5vw, 68px);
+  .cap-scene {
+    min-height: 470px;
+  }
+
+  .cap-scene-body {
+    margin-top: 80px;
+  }
+
+  .cap-scene-title {
+    font-size: clamp(58px, 8vw, 115px);
+  }
+
+  .cap-scene-bottom {
+    gap: 5vw;
+  }
+
+  .cap-scene-description {
+    font-size: 19px;
+  }
+
+  .cap-step {
+    font-size: 18px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .capabilities {
     padding-top: 80px;
     padding-bottom: 90px;
@@ -244,64 +247,85 @@
     gap: 38px;
   }
 
-  .cap-top > .tag {
-    margin-bottom: 0;
-  }
-
   .cap-heading > .eyebrow {
     margin-bottom: 32px;
   }
 
   .cap-intro {
-    max-width: 580px;
     margin-top: 38px;
+    font-size: 20px;
   }
 
-  .cap-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .cap-scenes {
     margin-top: 75px;
   }
 
-  .cap-card {
-    min-height: 340px;
-    padding: 24px;
+  .cap-scene {
+    min-height: 430px;
+    padding: 30px 0 35px;
   }
 
-  .cap-card-main {
-    margin-bottom: 38px;
+  .cap-scene-body {
+    margin-top: 70px;
   }
 
-  .cap-card-main h3 {
-    font-size: clamp(36px, 5vw, 58px);
+  .cap-scene-title {
+    font-size: clamp(52px, 8vw, 90px);
   }
 
-  .cap-card-bottom {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .cap-scene-line {
+    margin-top: 42px;
   }
 
-  .cap-card-bottom > span {
-    display: none;
+  .cap-scene-bottom {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+    gap: 40px;
   }
 
-  .cap-card-bottom p {
-    font-size: 15px;
-    line-height: 1.5;
+  .cap-scene-description {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .cap-steps {
+    gap: 18px;
+  }
+
+  .cap-step {
+    font-size: 18px;
+  }
+
+  .cap-step b {
+    font-size: 10px;
+  }
+
+  .cap-end {
+    font-size: 11px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .capabilities {
+    width: 100%;
+    max-width: 100%;
     padding-top: 70px;
-    padding-bottom: 75px;
+    padding-bottom: 80px;
+    overflow-x: hidden;
   }
 
   .cap-top {
     display: block;
+    width: 100%;
+    max-width: 100%;
   }
 
   .cap-top > .tag {
     margin-bottom: 38px;
+  }
+
+  .cap-heading {
+    width: 100%;
+    max-width: 100%;
   }
 
   .cap-heading > .eyebrow {
@@ -310,80 +334,132 @@
   }
 
   .cap-heading .mega {
+    width: 100%;
+    max-width: 100%;
     font-size: clamp(52px, 11vw, 78px);
     line-height: 0.88;
   }
 
   .cap-intro {
+    width: 100%;
     max-width: 100%;
     margin-top: 34px;
     font-size: 18px;
     line-height: 1.65;
   }
 
-  .cap-grid {
-    grid-template-columns: 1fr;
-    margin-top: 60px;
+  .cap-scenes {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 65px;
+    overflow: hidden;
   }
 
-  .cap-card {
-    min-height: 320px;
-    padding: 23px;
+  .cap-scene {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    padding: 25px 0 45px;
+    overflow: hidden;
   }
 
-  .cap-card-top {
-    grid-template-columns: 38px minmax(0, 1fr) auto;
-    gap: 10px;
+  .cap-scene-top {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 35px minmax(0, 1fr) 34px;
+    gap: 12px;
   }
 
-  .cap-card-label {
+  .cap-scene-number {
+    font-size: 10px;
+  }
+
+  .cap-scene-label {
+    max-width: 100%;
     font-size: 9px;
-    line-height: 1.3;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
   }
 
-  .cap-card-arrow {
-    font-size: 23px;
-  }
-
-  .cap-card-main {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .cap-card-main h3 {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    font-size: clamp(32px, 9.5vw, 52px);
-    line-height: 0.88;
-    letter-spacing: -0.055em;
-    overflow: hidden;
-  }
-
-  .cap-card-main h3 span {
-    display: block;
-    width: fit-content;
-    max-width: 100%;
-    white-space: nowrap;
-  }
-
-  .cap-card-bottom {
-    display: block;
-  }
-
-  .cap-card-bottom p {
-    max-width: 100%;
+  .cap-scene-marker {
+    width: 34px;
+    height: 34px;
     font-size: 15px;
-    line-height: 1.55;
+  }
+
+  .cap-scene-body {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 65px;
+    overflow: hidden;
+  }
+
+  .cap-scene-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(37px, 9.5vw, 52px);
+    line-height: 0.84;
+    letter-spacing: -0.06em;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .cap-scene-line {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 32px;
+  }
+
+  .cap-scene-bottom {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 26px;
+  }
+
+  .cap-scene-description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .cap-steps {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 32px;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .cap-step {
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    white-space: normal;
+  }
+
+  .cap-step b {
+    font-size: 9px;
+  }
+
+  .cap-step:not(:last-child)::after {
+    margin-left: 7px;
+  }
+
+  .cap-end {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: 9px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
   .capabilities {
     padding-top: 65px;
-    padding-bottom: 65px;
+    padding-bottom: 70px;
   }
 
   .cap-top > .tag {
@@ -396,7 +472,6 @@
 
   .cap-heading .mega {
     font-size: clamp(44px, 12.5vw, 62px);
-    letter-spacing: -0.055em;
   }
 
   .cap-intro {
@@ -405,82 +480,73 @@
     line-height: 1.6;
   }
 
-  .cap-grid {
-    margin-top: 50px;
+  .cap-scenes {
+    margin-top: 55px;
   }
 
-  .cap-card {
-    min-height: 300px;
-    padding: 19px;
+  .cap-scene {
+    padding: 22px 0 40px;
   }
 
-  .cap-card-top {
-    grid-template-columns: 30px minmax(0, 1fr) auto;
+  .cap-scene-top {
+    grid-template-columns: 28px minmax(0, 1fr) 30px;
+    gap: 9px;
   }
 
-  .cap-card-number {
-    font-size: 10px;
+  .cap-scene-number {
+    font-size: 9px;
   }
 
-  .cap-card-label {
+  .cap-scene-label {
     font-size: 8px;
   }
 
-  .cap-card-arrow {
-    font-size: 20px;
+  .cap-scene-marker {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
   }
 
-  .cap-card-main {
-    margin-top: 45px;
-    margin-bottom: 28px;
+  .cap-scene-body {
+    margin-top: 55px;
   }
 
-  .cap-card-main h3 {
-    font-size: clamp(39px, 13vw, 56px);
-  }
-
-  .cap-card-bottom p {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-}
-@media (max-width: 768px) {
-  .cap-grid {
+  .cap-scene-title {
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    font-size: clamp(34px, 9.5vw, 48px);
+    line-height: 0.86;
+    letter-spacing: -0.055em;
   }
 
-  .cap-card {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    min-height: 310px;
-    padding: 22px;
-    box-sizing: border-box;
+  .cap-scene-line {
+    margin-top: 27px;
   }
 
-  .cap-card-top,
-  .cap-card-main,
-  .cap-card-bottom {
-    min-width: 0;
-    max-width: 100%;
+  .cap-scene-bottom {
+    margin-top: 22px;
   }
 
-  .cap-card-bottom p {
-    overflow-wrap: break-word;
+  .cap-scene-description {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .cap-steps {
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .cap-step {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .cap-step b {
+    font-size: 8px;
+  }
+
+  .cap-end {
+    font-size: 8px;
   }
 }
-@media (max-width: 480px) {
-  .cap-card {
-    min-height: 295px;
-    padding: 19px;
-  }
-  .cap-card-main h3 {
-    font-size: clamp(28px, 8vw, 42px);
-  }
-}
-
-
-  
-
