@@ -20,12 +20,22 @@ function Contact() {
           from there.
         </p>
 
-        <a
-          className="contact-button"
-          href="mailto:eventlabsentertainments@gmail.com?subject=Event%20Enquiry"
-        >
-          START A CONVERSATION <b>↗</b>
-        </a>
+        <div className="contact-actions">
+          <a
+            className="contact-button whatsapp-button"
+            href="https://wa.me/919446423931?text=Hi%20EventLabs%2C%20I%20would%20like%20to%20discuss%20an%20event."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TALK ON WHATSAPP <b>↗</b>
+          </a>
+          <a
+            className="contact-button"
+            href="mailto:eventlabsentertainments@gmail.com?subject=Event%20Enquiry"
+          >
+            SEND AN ENQUIRY <b>↗</b>
+          </a>
+        </div>
       </div>
 
       <footer>
